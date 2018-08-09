@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     
     private String driver = "org.postgresql.Driver";
-    private String database = "jdbc:postgresql://localhost:5432/atividade-dac-docker";
+    private String database = "jdbc:postgresql://host-banco:5432/contatos";
     private String user = "postgres";
     private String password = "123456";
     
