@@ -1,0 +1,6 @@
+br\ifpb\edu\entidades\Pessoa.class
+br\edu\ifpb\fabrica\ConnectionFactory.class
+br\edu\ifpb\controladores\ControladorCliente.class
+br\edu\ifpb\daos\DaoCliente.class
+br\edu\ifpb\interfaces\DaoClientesInterface.class
+br\ifpb\edu\entidades\Contato.class

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+            <h:commandButton value="Sair" action="#{controladorContato.logout()}"></h:commandButton>
+        </h:form>
+        <h:form>
+            <h:outputLabel for="nome" value="Nome: "/><br>
+            <h:inputText id="nome" value="${controladorContato.contato.nome}" /><br>
+            <h:outputLabel for="email" value="Email: " rendered="${not controladorContato.modoEditando}" /><br>
+            <h:inputText id="email" value="${contatoController.contato.email}" rendered="${not controladorContato.modoEditando}"/><br>
+            <h:outputLabel for="telefone" value="Telefone: "/><br>
+            <h:inputText id="telefone" value="${controladorContato.contato.telefone}" /><br>
+            <h:outputLabel for="dataNasc" value="Data de Nascimento: " /><br>
+            <input type="date" id="dataNasc" jsf:value="${controladorContato.contato.dataNascimento}" jsf:converter="converter.Date" /><br>
+            <h:commandButton value="Salvar" rendered="${not controladorContato.modoEditando}" action="${contatoController.salvar()}"></h:commandButton>
+            <h:commandButton value="Editar" rendered="${controladorContato.modoEditando}" action="${contatoController.atualizar()}"></h:commandButton>
+        </h:form>
+        
+        <h1>Contantos Cadastrados</h1>
+        <h:dataTable id="tabela" value="#{contatoController.listarTodos()}" var="contato">
+            <h:column>
+                #{contato.nome}
+            </h:column>
+            <h:column>
+                #{contato.email}
+            </h:column>
+            <h:column>
+                #{contato.telefone}
+            </h:column>
+            <h:column>
+                #{contato.dataNascimento}
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton  value="Editar" action="#{contatoController.setContato(contato)}"></h:commandButton>
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Excluir" action="#{contatoController.remover(contato)}"></h:commandButton>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </body>
+</html>
